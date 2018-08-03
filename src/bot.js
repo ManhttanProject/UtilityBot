@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const auth = require('../auth.json');
-const arMap = require('../configs/arMap.json');
-const UBStorage = require('../configs/UtilityBotStorage');
+const arMap = require('../storage/arMap.json');
+const UBStorage = require('../storage/UtilityBotStorage');
 
 const client = new Discord.Client();
 const token = auth.token;
