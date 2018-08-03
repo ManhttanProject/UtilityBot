@@ -1,0 +1,9 @@
+{
+  "tag":
+  {
+    "keys": ["hello", "world"],
+    "response": "howdy there pal",
+    "enabled": true,
+    "includeAuthor": true
+  }
+}
