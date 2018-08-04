@@ -5,9 +5,22 @@ const photoMap = require('../storage/photoMap.json');
 const UBStorage = require('../storage/UtilityBotStorage');
 const commands = require('./commands.js');
 
+// SENDERS
+function sendError(channel, usage)
+{
+    channel.send("usage: " + usage);
+}
+
+function sendConfirm(channel)
+{
+    channel.send("command executed");
+}
+
+
+// HELPERS
 function helperAutoResponse(enable, tag)
 {
-    if (tag)
+    if (!tag)
     {
         let arProps = Object.getOwnPropertyNames(arMap);
         for (let i = 0; i < arProps.length; ++i)
@@ -24,11 +37,13 @@ function helperAutoResponse(enable, tag)
     }
 }
 
+
+// COMMANDS
 function commandDar(args, msg)
 {
-    if (command.args.length == 1)
+    if (args.length == 1)
     {
-        helperAutoResponse(false, command.args[0]);
+        helperAutoResponse(false, args[0]);
     }
     else
     {
@@ -39,9 +54,9 @@ function commandDar(args, msg)
 
 function commandEar(args, msg)
 {
-    if (command.args.length == 1)
+    if (args.length == 1)
     {
-        helperAutoResponse(true, command.args[0]);
+        helperAutoResponse(true, args[0]);
     }
     else
     {

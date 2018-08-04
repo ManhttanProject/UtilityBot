@@ -56,15 +56,7 @@ function getAutoResponse(msg)
 
 
 // COMMAND HELPERS ===========================
-function sendError(channel, usage)
-{
-    channel.send("usage: " + usage);
-}
 
-function sendConfirm(channel)
-{
-    channel.send("command executed");
-}
 
 
 
