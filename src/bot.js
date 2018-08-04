@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const auth = require('../auth.json');
 const arMap = require('../storage/arMap.json');
 const UBStorage = require('../storage/UtilityBotStorage');
+const commands = require('./commands.js');
 
 const client = new Discord.Client();
 const token = auth.token;
@@ -68,15 +69,7 @@ function sendConfirm(channel)
 
 
 // COMMANDS ==================================
-function commandHelp(msg)
-{
-    let help_msg = "**Howdy! I\'m Utility Bot. Here are my commands:**\n\n" +
-        "**!help** = Chill, you already figured this one out.\n" +
-        "**!enableAutoResponse [tag]** = Enables auto responses. Only affects the tagged AR if specified.\n" +
-        "**!disableAutoResponse [tag]** = Disables auto responses. Only affects the tagged AR if specified\n" +
-        "**!random min max** = Generates a random number in the range [min,max).";
-    msg.channel.send(help_msg);
-}
+
 
 function commandAutoResponse(enable, tag)
 {
@@ -95,13 +88,6 @@ function commandAutoResponse(enable, tag)
             arMap[tag].enabled = enable;
         }
     }
-}
-
-function commandRandom(min, max, msg)
-{
-    let rand = Math.random();
-    let num = Math.floor(rand * Math.floor(max - min)) + Math.floor(min);
-    msg.channel.send(num.toString());
 }
 
 function commandAddMeme(memeLink)
@@ -128,17 +114,12 @@ client.on('error', (err) =>
     {
         console.log('unknown error encountered');
     }
-})
+});
 
 client.on('warn', (info) =>
 {
     console.log(info);
-})
-
-client.on('typingStart', (channel, user) =>
-{
-    console.log(user.username + ' started typing');
-})
+});
 
 client.on('message', (msg) =>
 {
@@ -154,65 +135,10 @@ client.on('message', (msg) =>
     let command = getCommand(msg);
     if (command)
     {
-        switch (command.type)
-        {
-            case "help":
-                commandHelp(msg);
-                return;
-            case "enableAutoResponse":
-            case "e-ar":
-                if (command.args)
-                {
-                    commandAutoResponse(true, command.args[0]);
-                }
-                else
-                {
-                    commandAutoResponse(true);
-                }
-                sendConfirm(msg.channel);
-                return;
-            case "disableAutoResponse":
-            case "d-ar":
-                if (command.args)
-                {
-                    commandAutoResponse(false, command.args[0]);
-                }
-                else
-                {
-                    commandAutoResponse(false);
-                }
-                sendConfirm(msg.channel);
-                return;
-            case "random":
-                if (command.args && command.args.length == 2)
-                {
-                    commandRandom(command.args[0], command.args[1], msg);
-                }
-                else
-                {
-                    sendError(msg.channel, "!random <start\> <end>");
-                }
-                return;
-            case "addMeme":
-                if (command.args && command.args.length == 1)
-                {
-                    commandAddMeme(command.args[0]);
-                }
-                else
-                {
-                    sendError(msg.channel, "!addMeme <meme link>");
-                }
-                return;
-            case "bignut":
-                msg.channel.send({
-                    files: [{
-                        attachment: './assets/bignut.jpg',
-                        name: 'bignut.jpg'
-                    }]
-                });
-                break;
-        }
+        command.type.toLowerCase();
+        command.type.trim();
 
+        commands.process(command, msg);
         return;
     }
 
