@@ -1,9 +1,37 @@
 {
-  "tag":
+  "mha":
   {
-    "keys": ["hello", "world"],
-    "response": "howdy there pal",
+    "keys": ["mha", "all might", "my hero", "academia"],
+    "response": "what a fuckin' weeb",
     "enabled": true,
     "includeAuthor": true
+  },
+  "iraq":
+  {
+    "keys": ["dick", "cheney", "iraq", "dog"],
+    "response": "DICK CHENEY MADE MONEY OFF THE IRAQ WAR",
+    "enabled": true,
+    "includeAuthor": false
+  },
+  "trap":
+  {
+    "keys": ["trap", "traps", "sneaky"],
+    "response": "TRAPS ARE NOT GAY",
+    "enabled": true,
+    "includeAuthor": false
+  },
+  "noah":
+  {
+    "keys": ["cunt", "bitch"],
+    "response": "LISTEN...",
+    "enabled": true,
+    "includeAuthor": true
+  },
+  "bush":
+  {
+    "keys": ["bush", "9/11", "tower"],
+    "response": "bush did 9/11",
+    "enabled": true,
+    "includeAuthor": false
   }
 }

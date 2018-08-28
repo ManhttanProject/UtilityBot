@@ -1,7 +1,22 @@
 {
-  "tag":
+  "bignut":
   {
-    "attachment": "/localpath.jpg",
-    "name": "localpath.jpg"
+    "attachment": "./assets/bignut.jpg",
+    "name": "bignut.jpg"
+  },
+  "daddy":
+  {
+    "attachment": "./assets/reid.jpg",
+    "name": "daddy.jpg"
+  },
+  "sexy":
+  {
+    "attachment": "./assets/chase.png",
+    "name": "sexy.jpg"
+  },
+  "orgasm":
+  {
+    "attachment": "./assets/orgasm.png",
+    "name": "orgasm.jpg"
   }
 }
